@@ -1,3 +1,6 @@
+
+// This is a reducer function
+// This will provide the value of an application state
 export default function() {
   return [
       { title: 'Book 1'},

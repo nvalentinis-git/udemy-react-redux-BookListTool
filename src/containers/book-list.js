@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectBook } from '../actions/index';
+import { bindActionCreator } from 'redux';
 
 class BookLis extends Component {
 
@@ -34,7 +36,17 @@ function mapStateToProps(state) {
   };
 }
 
+// - This function ensure that the Actions are passed through
+//    all the reducers on the application.
+// - This function will return an object that will be
+//    available as 'props', this.props.books
+//    the object returned will be the one passed on the
+//    function bindActionCreator()
+function mapDispatchToProps(dispatch) {
+  return bindActionCreator({ selectBook: selectBook }, dispatch);
+}
+
 // The Container is exported, not the plain React Component
 // connect receive a function where the map is done
 // When the state change the component will automatically re-rendered
-export default connect(mapStateToProps) (BookLis);
+export default connect(mapStateToProps, mapDispatchToProps) (BookLis);
