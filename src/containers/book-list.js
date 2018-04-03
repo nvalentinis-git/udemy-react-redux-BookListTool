@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectBook } from '../actions/index';
-import { bindActionCreator } from 'redux';
+import { bindActionCreators } from 'redux';
 
 class BookLis extends Component {
 
@@ -9,8 +9,9 @@ class BookLis extends Component {
     return this.props.books.map( (book) => {
         return (
           <li key={book.title}
-              lassName="list-group-item">
-                {book.title}
+              onClick={() => this.props.selectBook(book)}
+              className="list-group-item">
+              {book.title}
           </li>
         );
     });
@@ -43,7 +44,7 @@ function mapStateToProps(state) {
 //    the object returned will be the one passed on the
 //    function bindActionCreator()
 function mapDispatchToProps(dispatch) {
-  return bindActionCreator({ selectBook: selectBook }, dispatch);
+  return bindActionCreators({ selectBook: selectBook }, dispatch);
 }
 
 // The Container is exported, not the plain React Component
