@@ -26,7 +26,7 @@ class BookLis extends Component {
   }
 }
 
-// - This function will map the 'app state' from Redux
+// - This function will map the 'App State' from Redux
 //    into the 'props' on the React component
 // - This function will be called by the 'connect' function from Redux
 // - This function will return an object that will be
@@ -40,7 +40,7 @@ function mapStateToProps(state) {
 // - This function ensure that the Actions are passed through
 //    all the reducers on the application.
 // - This function will return an object that will be
-//    available as 'props', this.props.books
+//    available as 'props', this.props.selectBook
 //    the object returned will be the one passed on the
 //    function bindActionCreator()
 function mapDispatchToProps(dispatch) {
@@ -48,6 +48,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 // The Container is exported, not the plain React Component
-// connect receive a function where the map is done
+// connect() receive as first parameter a function to map the App State
+//  into the props.
+// conncet() receive as second parameter a function to map the Actions
+//  you whant to flush on all the Reducers
 // When the state change the component will automatically re-rendered
 export default connect(mapStateToProps, mapDispatchToProps) (BookLis);
